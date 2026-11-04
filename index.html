@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080817">
+  <meta name="description" content="CreateX AI — imagine it, type it, create it.">
+  <title>CreateX AI</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <style>
+    :root{color-scheme:dark;--bg:#080817;--panel:#12122b;--line:#302b69;--muted:#b7b5d8;--purple:#a52cff;--blue:#168cff;--cyan:#20d8ff}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 85% 0%,#241052 0,transparent 36%),var(--bg);color:#f7f6ff;font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
+    button,input,textarea,select{font:inherit}button{cursor:pointer}
+    .wrap{max-width:1120px;margin:auto;padding:18px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px}
+    .brand{display:flex;align-items:center;gap:10px;font-size:22px;font-weight:850;letter-spacing:-.7px}.logo{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,var(--cyan),#513cff 55%,var(--purple));display:grid;place-items:center;font-size:22px;box-shadow:0 0 25px #6d38ff66}
+    .tag{color:var(--muted);font-size:12px}.pill{border:1px solid #51428a;border-radius:99px;padding:7px 12px;color:#e6d8ff;background:#17132e}
+    .hero{padding:30px;border:1px solid #5441a2;border-radius:24px;background:linear-gradient(115deg,#171039,#101a43 60%,#10102a);box-shadow:0 12px 45px #5c24ff22;margin-bottom:22px}
+    h1{font-size:clamp(30px,6vw,52px);line-height:1.04;margin:0 0 12px;letter-spacing:-1.5px}.gradient{background:linear-gradient(90deg,#d55cff,#45caff);background-clip:text;color:transparent}.hero p{color:#d0ccef;max-width:570px;margin:0 0 18px}
+    .btn{border:0;border-radius:13px;padding:12px 18px;color:white;font-weight:750;background:linear-gradient(100deg,var(--purple),var(--blue));box-shadow:0 7px 22px #792cff44}
+    .btn.secondary{background:#1b1a38;border:1px solid #494278;box-shadow:none}.section-title{font-size:20px;margin:25px 0 12px}
+    .tools{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.tool{background:linear-gradient(145deg,#171633,#10152c);border:1px solid var(--line);border-radius:17px;padding:17px;text-align:left;color:white;min-height:112px}.tool b{display:block;font-size:16px;margin:8px 0 3px}.tool span{color:var(--muted);font-size:13px}.tool .ico{font-size:24px}
+    .workspace{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}.panel{background:#111127;border:1px solid var(--line);border-radius:20px;padding:18px}
+    label{display:block;font-weight:700;margin:12px 0 6px}textarea,input,select{width:100%;background:#09091a;color:white;border:1px solid #393467;border-radius:12px;padding:12px;outline:none}textarea{min-height:120px;resize:vertical}textarea:focus,input:focus,select:focus{border-color:#a64cff}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.hint{color:var(--muted);font-size:12px}.preview{min-height:230px;border:1px dashed #554a91;border-radius:15px;display:grid;place-items:center;text-align:center;padding:15px;color:var(--muted);overflow:hidden}.preview img{max-width:100%;max-height:260px;border-radius:12px}
+    .status{margin-top:12px;padding:10px;border-radius:10px;background:#171735;color:#d8d4ff;font-size:13px;display:none}.status.show{display:block}
+    footer{padding:25px 0 10px;text-align:center;color:#8986ad;font-size:12px}
+    @media(max-width:760px){.tools{grid-template-columns:repeat(2,1fr)}.workspace{grid-template-columns:1fr}.hero{padding:23px}.wrap{padding:14px}}
+    @media(max-width:390px){.tools{grid-template-columns:1fr}.row{grid-template-columns:1fr}.brand{font-size:19px}}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div><div class="brand"><div class="logo">▶</div><span>Create<span class="gradient">X AI</span></span></div><div class="tag">AI VIDEO CREATION STUDIO</div></div>
+    <span class="pill">✦ Creator</span>
+  </header>
+
+  <section class="hero">
+    <h1>Imagine it.<br>Type it. <span class="gradient">Create it.</span></h1>
+    <p>Turn your ideas into videos with a simple creative workspace. Your next story starts here.</p>
+    <button class="btn" onclick="document.querySelector('#prompt').focus()">＋ Start creating</button>
+  </section>
+
+  <h2 class="section-title">Your creative tools</h2>
+  <div class="tools">
+    <button class="tool" onclick="setMode('Text to Video')"><div class="ico">🎬</div><b>Text to Video</b><span>Make a video from a prompt</span></button>
+    <button class="tool" onclick="setMode('Image to Video')"><div class="ico">🖼️</div><b>Image to Video</b><span>Animate a still image</span></button>
+    <button class="tool" onclick="setMode('AI Voice')"><div class="ico">🎙️</div><b>AI Voice & Talking</b><span>Prepare narration</span></button>
+    <button class="tool" onclick="setMode('Anime Generator')"><div class="ico">🌸</div><b>Anime Generator</b><span>Create an anime concept</span></button>
+    <button class="tool" onclick="setMode('Cinematic Generator')"><div class="ico">🎞️</div><b>Cinematic Generator</b><span>Plan a film-style scene</span></button>
+    <button class="tool" onclick="setMode('Video Editing')"><div class="ico">✂️</div><b>Video Editing</b><span>Prepare an edit</span></button>
+  </div>
+
+  <h2 class="section-title">Create a new project</h2>
+  <div class="workspace">
+    <section class="panel">
+      <div class="pill" id="modeLabel">Text to Video</div>
+      <label for="prompt">Describe your video</label>
+      <textarea id="prompt" maxlength="1000" placeholder="Example: A peaceful beach at sunset, waves moving slowly, cinematic lighting..."></textarea>
+      <div class="hint"><span id="count">0</span>/1000 characters</div>
+      <div class="row">
+        <div><label for="style">Visual style</label><select id="style"><option>Cinematic</option><option>Anime</option><option>Realistic</option><option>Vintage</option><option>Fantasy</option><option>Nature</option></select></div>
+        <div><label for="ratio">Aspect ratio</label><select id="ratio"><option>9:16 — Mobile</option><option>16:9 — Landscape</option><option>1:1 — Square</option></select></div>
+      </div>
+      <div class="row">
+        <div><label for="duration">Duration</label><select id="duration"><option>5 seconds</option><option>10 seconds</option><option>15 seconds</option><option>30 seconds</option></select></div>
+        <div><label for="voice">Voice</label><select id="voice"><option>No voice</option><option>Male voice</option><option>Female voice</option><option>Telugu voice</option><option>English voice</option></select></div>
+      </div>
+      <label for="imageUpload">Reference image (optional)</label>
+      <input id="imageUpload" type="file" accept="image/*">
+      <p class="hint">Prototype only: image preview works locally in your browser.</p>
+      <button class="btn" id="generate" style="width:100%;margin-top:14px">Prepare project ✨</button>
+      <div class="status" id="status" role="status"></div>
+    </section>
+    <aside class="panel">
+      <h3 style="margin-top:0">Preview</h3>
+      <div class="preview" id="preview">Your selected image will appear here.</div>
+      <h3>Project details</h3>
+      <div class="hint" id="details">Choose a tool and enter a prompt to prepare your project.</div>
+    </aside>
+  </div>
+  <footer>© 2026 CreateX AI · Prototype build · AI generation services are not connected yet.</footer>
+</div>
+<script>
+  const promptBox=document.querySelector('#prompt'), count=document.querySelector('#count');
+  const statusBox=document.querySelector('#status'), preview=document.querySelector('#preview');
+  let mode='Text to Video', imageName='';
+  promptBox.addEventListener('input',()=>count.textContent=promptBox.value.length);
+  function setMode(name){mode=name;document.querySelector('#modeLabel').textContent=name;document.querySelector('#details').textContent=name+' selected. Add your prompt and settings to prepare the project.';document.querySelector('#prompt').focus();}
+  document.querySelector('#imageUpload').addEventListener('change',e=>{
+    const file=e.target.files[0]; if(!file)return;
+    imageName=file.name; const url=URL.createObjectURL(file);
+    preview.innerHTML=''; const img=document.createElement('img'); img.src=url; img.alt='Selected reference image'; preview.appendChild(img);
+  });
+  document.querySelector('#generate').addEventListener('click',()=>{
+    const prompt=promptBox.value.trim();
+    if(!prompt){statusBox.textContent='Please enter a video description first.';statusBox.classList.add('show');promptBox.focus();return;}
+    const style=document.querySelector('#style').value, ratio=document.querySelector('#ratio').value;
+    const duration=document.querySelector('#duration').value, voice=document.querySelector('#voice').value;
+    document.querySelector('#details').textContent=`${mode} · ${style} · ${ratio} · ${duration} · ${voice}${imageName?' · '+imageName:''}`;
+    statusBox.textContent='Project brief prepared! This prototype does not generate a video yet. Connect an AI video API in the backend to enable real generation.';
+    statusBox.classList.add('show');
+  });
+  if('serviceWorker' in navigator && location.protocol.startsWith('http')) navigator.serviceWorker.register('./sw.js').catch(()=>{});
+</script>
+</body>
+</html>

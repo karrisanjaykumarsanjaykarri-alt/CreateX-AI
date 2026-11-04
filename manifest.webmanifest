@@ -1,0 +1,10 @@
+{
+  "name": "CreateX AI",
+  "short_name": "CreateX AI",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#080817",
+  "theme_color": "#080817",
+  "description": "CreateX AI video creation studio",
+  "icons": []
+}
