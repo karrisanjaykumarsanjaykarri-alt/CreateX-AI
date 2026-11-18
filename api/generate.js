@@ -1,4 +1,8 @@
+
 import { Client } from "@gradio/client";
+
+const SPACE_URL =
+  "https://lightricks-ltx-video-distilled.hf.space";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -44,10 +48,27 @@ export default async function handler(req, res) {
       improve_texture_flag: true
     });
 
+    const file = result.data?.[0];
+
+    let videoUrl =
+      typeof file === "string" ? file : file?.url;
+
+    if (!videoUrl && file?.path?.startsWith("http")) {
+      videoUrl = file.path;
+    }
+
+    if (!videoUrl) {
+      throw new Error(
+        "The AI service did not return a playable video URL."
+      );
+    }
+
+    videoUrl = new URL(videoUrl, SPACE_URL).toString();
+
     return res.status(200).json({
       success: true,
-      video: result.data[0],
-      seed: result.data[1]
+      video: videoUrl,
+      seed: result.data?.[1] ?? null
     });
 
   } catch (error) {
