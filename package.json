@@ -1,0 +1,10 @@
+
+{
+  "name": "createx-ai",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@gradio/client": "^2.8.0"
+  }
+}
